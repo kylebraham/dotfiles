@@ -1,0 +1,29 @@
+[user]
+    name = Kyle Braham
+    email = polymorphic92@gmail.com
+[alias]
+    co  = checkout
+    cob = checkout -b # checkout new branch
+    br  = branch
+    brn = branch-m # Move/rename a branch
+    brd = branch -d # Delete branch
+    brD = branch -D # Force delete branch
+    brr = branch -r # View remote branch
+    bra = branch -a # View all branches
+    st = status -sb
+    ru = remote update
+
+    dfn = diff --name-only
+    #logging
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lg = log --color --graph --date-order --pretty=format:'%C(magenta)%h %C(reset)-%C(red)%d %C(reset)%s %C(bold blue)<%an> %C(reset)%C(green)%ar%C(cyan)(%ad)' --date=local
+    #git funcs
+    bclean = "!f() { git branch --merged ${1-development} | grep -v " ${1-development}$" | xargs git branch -d; }; f"
+    swb    = "!f() { git remote update && git checkout "$1" && git status; }; f"
+    dev    = "!f() { git swb development; }; f"
+    sortdiff = !sh -c 'git diff "$@" | grep "^[+-]" | sort --key=1.2 | uniq -u -s1'
+
+
+
+    
