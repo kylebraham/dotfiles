@@ -1,0 +1,16 @@
+##################################
+########### DOCKER ###############
+##################################
+
+function dsc {
+  docker stop $(docker ps -aq)
+}
+function dsc {
+  docker stop $(docker ps -aq) # stop containers
+}
+function drc {
+ docker rm $(docker ps -aq)  # remove all stop containers
+}
+function dri {
+ docker image rm $(docker images -q) # remove images
+}
