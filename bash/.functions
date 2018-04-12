@@ -20,6 +20,12 @@ function dri {
 ########### OTHER ################
 ##################################
 
+#gnome lock 
+function lc {
+	clear
+	dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
+}
+
 # get permissions
 function  perm {
   stat -c "%a %n" $1
@@ -31,7 +37,7 @@ function md() {
 }
 
 #advance ls
-function la(){
+function lal(){
  	ls -l  "$@" | awk '
     {
       k=0;
@@ -64,3 +70,6 @@ function fs() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+# source work functions
+source ~/toolbox/dotfiles-w/bash/.functions
