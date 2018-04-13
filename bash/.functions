@@ -16,6 +16,12 @@ function drc {
 function dri {
  docker image rm $(docker images -q) 
 }
+
+#watch docker ps
+function wdps {
+	watch 'docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.Status}}"'
+}
+
 ##################################
 ########### OTHER ################
 ##################################
