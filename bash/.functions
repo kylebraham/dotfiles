@@ -16,6 +16,10 @@ function drc {
 function dri {
  docker image rm $(docker images -q) 
 }
+# remove(trim) dangling images 
+function dti {
+  docker image rm -f $(docker images -f "dangling=true" -q)
+}
 
 #watch docker ps
 function wdps {
