@@ -22,4 +22,4 @@ alias dra='docker system prune -af'             # remove all docker items
 
 
 # source a
-source ~/toolbox/dotfiles-w/bash/.bash_aliases
+source ../work/bash/.bash_aliases

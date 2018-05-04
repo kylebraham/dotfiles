@@ -82,4 +82,4 @@ function tre() {
 }
 
 # source work functions
-source ~/toolbox/dotfiles-w/bash/.functions
+source ../work//bash/.functions
