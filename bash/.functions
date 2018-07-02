@@ -9,7 +9,7 @@ function dsc {
 
 # remove all stop containers
 function drc {
- docker rm $(docker ps -aq)  
+ docker rm -f $(docker ps -aq)  
 }
 
 # remove images
@@ -20,6 +20,15 @@ function dri {
 function dti {
   docker image rm -f $(docker images -f "dangling=true" -q)
 }
+function dcu {
+	dsc
+	printf "\n\n\n\n"
+	drc
+	printf "\n\n\n\n"
+	dti
+	printf "\n\n\n\n"
+}
+
 
 #watch docker ps
 function wdps {
@@ -43,7 +52,7 @@ function  perm {
 
 #create dir and mv into dir 
 function md() {
-	mkdir -p "$@" && cd "$@"
+	mkdir -p "$@" && cd "${@: -1}"
 }
 
 #advance ls
