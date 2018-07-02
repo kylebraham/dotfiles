@@ -1,20 +1,18 @@
 alias ll='ls -alF'
 alias l='ls -CF'
 alias cl='clear'
-alias la='ls -a'
+alias la='ls -A'
+alias ld='ls -d -- */'
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias sbrc='source ~/.bashrc'
 
 #cd to common dirs
-alias wk='cd ~/code/repos/work'
-alias gh='cd ~/code/repos/github'
-alias sb='cd ~/code/repos/sandbox'
-alias dfw='cd ~/.dotfiles/personal'
-alias dfp='cd ~/.dotfiles/work'
 alias doc='cd ~/Documents'
+alias rs='cd ~/repos'
+alias sc='cd ~/scripts'
+alias ts='cd ~/tools'
 
 ##DOCKER##
-
 alias dk='docker'
 alias dkc='docker-compose'
 alias dra='docker system prune -af'          # remove all docker items
