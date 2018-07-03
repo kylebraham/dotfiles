@@ -12,21 +12,31 @@ function drc {
  docker rm -f $(docker ps -aq)  
 }
 
-# remove images
+# remove all images or remove images based on an arg in image name
 function dri {
- docker image rm -f $(docker images -q) 
+	dcu
+	if [[ $# -gt 0 ]] ; then
+		for var in "$@"
+			do
+				docker rmi $( docker images --format "{{.Repository}}" | grep $var)
+		done
+	else
+		docker image rm -f $(docker images -q)
+	fi
 }
+
 # remove(trim) dangling images 
 function dti {
-  docker image rm -f $(docker images -f "dangling=true" -q)
+	docker rmi -f $(docker images -f "dangling=true" -q)
 }
+
 function dcu {
 	dsc
-	printf "\n\n\n\n"
+	printf "\n\n"
 	drc
-	printf "\n\n\n\n"
+	printf "\n\n"
 	dti
-	printf "\n\n\n\n"
+	printf "\n\n"
 }
 
 
