@@ -16,7 +16,7 @@ alias ts='cd ~/tools'
 alias dk='docker'
 alias dkc='docker-compose'
 alias dra='docker system prune -af'          # remove all docker items
-alias dim='dti > /dev/null 2>&1 ; docker images'             # show docker images but not the <none> ones 
+alias di='dti > /dev/null 2>&1 ; docker images'             # show docker images but not the <none> ones 
 
 
 alias  kde-refresh='killall plasmashell && kstart plasmashell' # stop and restart kd5 
