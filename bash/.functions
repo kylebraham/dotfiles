@@ -42,7 +42,19 @@ function dcu {
 
 #watch docker ps
 function wdps {
-	watch 'docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.Status}}"'
+	watch -t 'docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.Status}}"'
+}
+
+function wdkps {
+	watch -t docker-compose ps 2>/dev/null | tail -n +3
+
+}
+
+#output logs from docker-compose service
+
+function dcl {
+	printf "$1\n\n"
+	docker-compose logs --no-color $1 | sed -e "s/$1[ \s]\+|\ //g"  > service-$1.logs
 }
 
 ##################################
@@ -102,4 +114,12 @@ function tre() {
 
 function decode() {
 	echo "$1" | base64 --decode
+}
+
+function utar(){
+	tar -xzf $@
+}
+
+function cgi() {
+	touch .gitignore
 }
