@@ -19,4 +19,6 @@ alias dra='docker system prune -af'          # remove all docker items
 alias di='dti > /dev/null 2>&1 ; docker images'             # show docker images but not the <none> ones 
 
 
-alias  kde-refresh='killall plasmashell && kstart plasmashell' # stop and restart kd5 
+alias  kde-refresh='killall plasmashell && kstart plasmashell' # stop and restart kd5
+
+alias sw='curl wttr.in' # show weather 
