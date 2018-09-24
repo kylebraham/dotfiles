@@ -5,6 +5,8 @@ alias la='ls -A --file-type'
 alias ld='ls -d -- */'
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias sbrc='source ~/.bashrc'
+alias h="history"
+alias grep='grep --color=auto'
 
 #cd to common dirs
 alias doc='cd ~/Documents'
