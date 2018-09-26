@@ -12,6 +12,11 @@ function drc {
  docker rm -f $(docker ps -aq)  
 }
 
+# stop and force remove then restart a set of docker compose services  
+function dkr {
+ docker-compose  rm -sf $@ && docker-compose up -d $@
+}
+
 # remove all images or remove images based on an arg in image name
 function dri {
 	dcu
