@@ -7,6 +7,8 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 alias sbrc='source ~/.bashrc'
 alias h="history"
 alias grep='grep --color=auto'
+alias mps='ps -a -U $USER'
+
 
 #cd to common dirs
 alias doc='cd ~/Documents'
