@@ -1,7 +1,7 @@
 alias ll='ls -alF'
 alias l='ls -CF'
 alias cl='clear'
-alias la='ls -A --file-type'
+alias la='ls -hA --file-type --group-directories-first'
 alias ld='ls -d -- */'
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias sbrc='source ~/.bashrc'
