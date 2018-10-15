@@ -6,7 +6,6 @@ if [ -f /etc/bashrc ]; then
 fi
 
 for file in ~/dotfiles/bash/.{exports,bash_aliases,functions}; do
-    echo $file
     [ -r "$file" ] && source "$file"
 done 
 unset file
