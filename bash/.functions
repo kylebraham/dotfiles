@@ -26,13 +26,13 @@ function dcu {
 	dsc && printf "\n\n" && drc && printf "\n\n" && dti && printf "\n\n"
 }
 
-# clean up containers then remove all images or remove images based on an arg in image name
+# Remove all images or remove images based on an arg in image name/tag
 function dri {
-	dcu
+	dti 2>/dev/null
 	if [[ $# -gt 0 ]] ; then
-		for var in "$@"
-			do
-				docker rmi $( docker images --format "{{.Repository}}" | grep $var)
+		for var in "$@" ; do
+			docker rmi -f $( docker images --format "{{.Repository}}" | grep $var)  2>/dev/null
+			docker rmi -f $( docker images --format "{{.ID}}" | grep $var)  2>/dev/null
 		done
 	else
 		docker image rm -f $(docker images -q)
@@ -41,12 +41,11 @@ function dri {
 
 #watch docker ps
 function wdps {
-	watch -t 'docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.Status}}"'
-}
-
-function wdcps {
-	watch -t docker-compose ps 2>/dev/null | tail -n +3
-
+	if [[ $# -eq 1 ]] && [[ $1 == 'c' ]] ; then
+		watch -t docker-compose ps
+	else 
+		watch -t 'docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.Status}}"'
+	fi 
 }
 
 #output logs from docker-compose service
