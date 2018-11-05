@@ -1,0 +1,21 @@
+{
+    "editor.minimap.enabled": false,
+    "explorer.confirmDelete": false,
+    "extensions.ignoreRecommendations": true,
+    "explorer.openEditors.visible": 0,
+    "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+    "git.autofetch": false,
+    "explorer.confirmDragAndDrop": false,
+    "workbench.startupEditor": "none",
+    "workbench.statusBar.feedback.visible": false,
+
+    "window.newWindowDimensions":"maximized",
+    "gitlens.toggleLineBlame": true,
+    
+    "workbench.colorTheme": "One Dark Pro Vivid",
+    "window.zoomLevel": 0,
+    "files.associations": {
+        ".functions": "shellscript",
+        "Vagrantfile": "ruby"
+    }
+}
