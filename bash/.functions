@@ -59,9 +59,9 @@ function dcl {
 	docker-compose logs --no-color $1 | sed -e "s/$1[ \s]\+|\ //g"  > service-$1.logs
 }
 
-##################################
-########### OTHER ################
-##################################
+####################################################################
+################ OTHER #############################################
+####################################################################
 
 #ls when cd'ing
 function cd {
@@ -69,12 +69,12 @@ function cd {
 	builtin cd "$@" && ls -A --file-type
 }
 
-# get permissions
+# Get permissions
 function  perm {
   stat -c "%a %n" $1
 }
 
-#create dir and mv into dir 
+# Create dir and mv into dir 
 function md() {
 	mkdir -p "$@" && cd "${@: -1}"
 }
