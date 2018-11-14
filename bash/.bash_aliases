@@ -17,8 +17,8 @@ alias ts='cd ~/tools'
 
 ##DOCKER##
 
-alias dra='docker system prune -af'             # remove all docker items
-alias di='dti > /dev/null 2>&1 ; docker images' # show docker images and trim any with '<none>' 
+alias dra='docker system prune -af --volumes'             # remove all docker items
+alias di='dti > /dev/null 2>&1 ; docker images'           # show docker images and trim any with '<none>' 
 
 ##OTHER##
 alias  kde-refresh='killall plasmashell && kstart plasmashell' # stop and restart kd5

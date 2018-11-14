@@ -1,15 +1,20 @@
-##################################
-########### DOCKER ###############
-##################################
+####################################################################
+################ DOCKER ############################################
+####################################################################
 
 # stop containers
 function dsc {
-  docker stop $(docker ps -aq)
+  docker stop $(docker ps -aq) 2>/dev/null
 }
 
-# remove all stop containers
+# force remove containers
 function drc {
- docker rm -f $(docker ps -aq)  
+ docker rm -fv $(docker ps -aq)  2>/dev/null
+}
+
+# remove container volumes
+function drv {
+ docker volume rm -f $(docker volume ls)  2>/dev/null
 }
 
 # stop and force remove then restart a set of docker compose services  
