@@ -113,6 +113,11 @@ function cgi() {
 	touch .gitignore
 }
 
+function vjson(){
+	curl -s $1 | bat --theme=TwoDark -l json
+}
+
+
 man() {
 	env \
 		LESS_TERMCAP_mb="$(printf '\e[1;31m')" \
