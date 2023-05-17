@@ -6,3 +6,10 @@ export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE=" *:ls:cd:cd -:pwd:exit:date:* --help"
+
+#PATH
+PATH="$HOME/bin:$HOME/.cargo/bin/:$PATH"
+export PATH
+
+# Starship config filec
+export STARSHIP_CONFIG=~/.config/starship/starship.toml

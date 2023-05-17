@@ -5,7 +5,11 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-for file in ~/.{exports,bash_aliases,functions}; do
+# User specific aliases and functions
+for file in $(find -L ~/.bashrc.d -type f); do
     [ -r "$file" ] && source "$file"
 done
 unset file
+
+# starship prompt
+eval "$(starship init bash)"
