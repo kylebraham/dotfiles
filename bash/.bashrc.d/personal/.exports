@@ -1,0 +1,15 @@
+##Bash History
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=50000000
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+# Make some commands not show up in history
+export HISTIGNORE=" *:ls:cd:cd -:pwd:exit:date:* --help"
+
+#PATH
+PATH="$HOME/bin:$HOME/.cargo/bin/:$PATH"
+export PATH
+
+# Starship config filec
+export STARSHIP_CONFIG=~/.config/starship/starship.toml

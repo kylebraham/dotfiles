@@ -2,23 +2,14 @@
 shopt -s autocd
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
-for file in ~/dotfiles/bash/.{exports,bash_aliases,functions}; do
+# User specific aliases and functions
+for file in $(find -L ~/.bashrc.d -type f); do
     [ -r "$file" ] && source "$file"
-done 
+done
 unset file
 
-
-#powerline-shell setup
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
-#Setting GOPATH
-PATH=$PATH:$(go env GOPATH)/bin
+# starship prompt
+eval "$(starship init bash)"
