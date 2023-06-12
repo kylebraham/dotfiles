@@ -1,29 +1,51 @@
 [user]
-    name = Kyle Braham
-    email = polymorphic92@gmail.com
+name = Kyle Braham
+email = polymorphic92@gmail.com
 [alias]
-    co  = checkout     # Checkout existing branch
-    cob = checkout -b  # Checkout new branch
-    br  = branch       # View branches
-    brn = branch -m    # Move/rename a branch
-    brd = branch -d    # Delete branch
-    brD = branch -D    # Force delete branch
-    brr = branch -r    # View remote branch
-    bra = branch -a    # View all branches
-    st = status        # Staus 
-    ru = remote update # Remote Update 
-    fa = fetch --all   # Fetch all
+co = checkout      # Checkout existing branch
+cob = checkout -b  # Checkout new branch
+br = branch        # View branches
+brn = branch -m    # Move/rename a branch
+brd = branch -d    # Delete branch
+brD = branch -D    # Force delete branch
+brr = branch -r    # View remote branch
+bra = branch -a    # View all branches
+st = status        # Staus
+ru = remote update # Remote Update
+fa = fetch --all   # Fetch all
 
-    # Logging
-    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    lg = log --color --graph --date-order --pretty=format:'%C(magenta)%h %C(reset)-%C(red)%d %C(reset)%s %C(bold blue)<%an> %C(reset)%C(green)%ar%C(cyan)(%ad)' --date=local
-    
-    # Git Funcs
-    swb    = "!f() { git remote update && git checkout "$1" && git status; }; f"
+# Logging
+ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+lg = log --color --graph --date-order --pretty=format:'%C(magenta)%h %C(reset)-%C(red)%d %C(reset)%s %C(bold blue)<%an> %C(reset)%C(green)%ar%C(cyan)(%ad)' --date=local
+
+# Git Funcs
+swb = "!f() { git remote update && git checkout "$1" && git status; }; f"
+
+[core]
+pager = delta
+
+[interactive]
+diffFilter = delta --color-only --features=interactive
+
+[delta]
+features = decorations
+line-numbers = true
+
+[delta "interactive"]
+keep-plus-minus-markers = false
+
+[delta "decorations"]
+commit-decoration-style = blue ol
+commit-style = raw
+file-style = omit
+hunk-header-decoration-style = blue box
+hunk-header-file-style = red
+hunk-header-line-number-style = "#067a00"
+hunk-header-style = file line-number syntax
 
 [fetch]
-    recurseSubmodules = true
+recurseSubmodules = true
 
 [includeIf "gitdir:~/work/"]
-    path = ~/.gitconfig-work
+path = ~/.gitconfig-work
