@@ -1,21 +1,25 @@
 {
     "editor.minimap.enabled": false,
+    "editor.formatOnSave": true,
     "explorer.confirmDelete": false,
     "extensions.ignoreRecommendations": true,
     "explorer.openEditors.visible": 0,
-    "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+    "terminal.integrated.fontFamily": "DroidSansMono Nerd Font",
     "git.autofetch": false,
     "explorer.confirmDragAndDrop": false,
     "workbench.startupEditor": "none",
     "workbench.statusBar.feedback.visible": false,
-
-    "window.newWindowDimensions":"maximized",
+    "window.newWindowDimensions": "maximized",
     "gitlens.toggleLineBlame": true,
-    
-    "workbench.colorTheme": "One Dark Pro Vivid",
-    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "gruvboxMaterial.darkContrast": "medium",
+    "gruvboxMaterial.darkPalette": "mix",
+    "gruvboxMaterial.darkWorkbench": "material",
+    "gruvboxMaterial.highContrast": true,
+    "gruvboxMaterial.italicComments": true,
     "files.associations": {
         ".functions": "shellscript",
         "Vagrantfile": "ruby"
-    }
+    },
+    "workbench.editor.untitled.hint": "hidden"
 }
