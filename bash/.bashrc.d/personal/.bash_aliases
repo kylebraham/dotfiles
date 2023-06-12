@@ -1,6 +1,5 @@
 alias cl='clear'
-alias la='ls -lhAF --file-type --group-directories-first'
-alias lsd='lsd -Al --group-directories-first -X'
+alias la='lsd -Al --group-directories-first -X'
 alias h="history"
 alias grep='grep --color=auto'
 

@@ -4,25 +4,25 @@
 
 # stop containers
 function dsc {
-  docker stop $(docker ps -aq) 2>/dev/null
+	docker stop $(docker ps -aq) 2>/dev/null
 }
 
 # force remove containers
 function drc {
- docker rm -fv $(docker ps -aq)  2>/dev/null
+	docker rm -fv $(docker ps -aq) 2>/dev/null
 }
 
 # remove container volumes
 function drv {
- docker volume rm -f $(docker volume ls)  2>/dev/null
+	docker volume rm -f $(docker volume ls) 2>/dev/null
 }
 
-# stop and force remove then restart a set of docker compose services  
+# stop and force remove then restart a set of docker compose services
 function dkr {
- docker-compose  rm -sf $@ && docker-compose up -d $@
+	docker-compose rm -sf $@ && docker-compose up -d $@
 }
 
-# remove(trim) dangling images 
+# remove(trim) dangling images
 function dti {
 	docker rmi -f $(docker images -f "dangling=true" -q)
 }
@@ -34,10 +34,10 @@ function dcu {
 # Remove all images or remove images based on an arg in image name/tag
 function dri {
 	dti 2>/dev/null
-	if [[ $# -gt 0 ]] ; then
-		for var in "$@" ; do
-			docker rmi -f $( docker images --format "{{.Repository}}" | grep $var)  2>/dev/null
-			docker rmi -f $( docker images --format "{{.ID}}" | grep $var)  2>/dev/null
+	if [[ $# -gt 0 ]]; then
+		for var in "$@"; do
+			docker rmi -f $(docker images --format "{{.Repository}}" | grep $var) 2>/dev/null
+			docker rmi -f $(docker images --format "{{.ID}}" | grep $var) 2>/dev/null
 		done
 	else
 		docker image rm -f $(docker images -q)
@@ -46,17 +46,17 @@ function dri {
 
 #watch docker ps
 function wdps {
-	if [[ $# -eq 1 ]] && [[ $1 == 'c' ]] ; then
+	if [[ $# -eq 1 ]] && [[ $1 == 'c' ]]; then
 		watch -t docker-compose ps
-	else 
+	else
 		watch -t 'docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.Status}}"'
-	fi 
+	fi
 }
 
 #output logs from docker-compose service
 
 function dcl {
-	docker-compose logs --no-color $1 | sed -e "s/$1[ \s]\+|\ //g"  > service-$1.logs
+	docker-compose logs --no-color $1 | sed -e "s/$1[ \s]\+|\ //g" >service-$1.logs
 }
 
 ####################################################################
@@ -65,32 +65,34 @@ function dcl {
 
 #ls when cd'ing
 function cd {
-	[ -z "$PS1" ] && return
-	builtin cd "$@" && ls -A --file-type
+	# [ -z "$PS1" ] && return
+	# builtin cd "$@" && ls -A --file-type
+	builtin cd "$@" && la
+
 }
 
 # Get permissions
-function  perm {
-  stat -c "%a %n" $1
+function perm {
+	stat -c "%a %n" $1
 }
 
-# Create dir and mv into dir 
+# Create dir and mv into dir
 function md() {
 	mkdir -p "$@" && cd "${@: -1}"
 }
 
 # Determine size of a file or total size of a directory
 function fs() {
-	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
+	if du -b /dev/null >/dev/null 2>&1; then
+		local arg=-sbh
 	else
-		local arg=-sh;
+		local arg=-sh
 	fi
 	if [[ -n "$@" ]]; then
-		du $arg -- "$@";
+		du $arg -- "$@"
 	else
-		du $arg .[^.]* ./*;
-	fi;
+		du $arg .[^.]* ./*
+	fi
 }
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
@@ -98,14 +100,14 @@ function fs() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
 }
 
 function decode() {
 	echo "$1" | base64 --decode
 }
 
-function utar(){
+function utar() {
 	tar -xzf $@
 }
 
@@ -113,10 +115,9 @@ function cgi() {
 	touch .gitignore
 }
 
-function vjson(){
+function vjson() {
 	curl -s $1 | bat --theme=TwoDark -l json
 }
-
 
 man() {
 	env \
@@ -128,4 +129,12 @@ man() {
 		LESS_TERMCAP_ue="$(printf '\e[0m')" \
 		LESS_TERMCAP_us="$(printf '\e[1;32m')" \
 		man "$@"
+}
+
+# search an given dir for sub dirs then cd into that sub dir
+function sd() {
+	start=$1
+	depth=$2
+	dir=$(find $start -maxdepth $depth -type d -not -path '*/\.*' | fzf --reverse --border --height 90% --preview="lsd --color=always -Al {1}")
+	cd $dir
 }
