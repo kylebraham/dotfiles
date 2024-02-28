@@ -7,3 +7,5 @@ for pkg in "${stow_pkgs[@]}"; do
     printf "\tInstalling: $pkg\n"
     stow -R $pkg -t $HOME
 done
+# install to $HOME/bin
+stow -R bin -t $HOME/bin
