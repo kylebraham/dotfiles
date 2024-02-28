@@ -95,14 +95,6 @@ function fs() {
 	fi
 }
 
-# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
-# the `.git` directory, listing directories first. The output gets piped into
-# `less` with options to preserve color and line numbers, unless the output is
-# small enough for one screen.
-function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
-}
-
 function decode() {
 	echo "$1" | base64 --decode
 }
@@ -113,10 +105,6 @@ function utar() {
 
 function cgi() {
 	touch .gitignore
-}
-
-function vjson() {
-	curl -s $1 | bat --theme=TwoDark -l json
 }
 
 man() {
@@ -137,4 +125,22 @@ function sd() {
 	depth=$2
 	dir=$(find $start -maxdepth $depth -type d -not -path '*/\.*' | fzf --reverse --border --height 90% --preview="lsd --color=always -Al {1}")
 	cd $dir
+}
+
+function dgs() {
+	ps -A | grep 'packagekit'
+
+	# packagekit
+	sudo systemctl stop packagekit.service
+	sudo systemctl disable packagekit.service
+	# packagekit-offline-update
+	sudo systemctl stop packagekit-offline-update.service
+	sudo systemctl disable packagekit-offline-update.service
+	# gnome-software
+	sudo systemctl stop packagekit-offline-update.service
+	sudo systemctl disable packagekit-offline-update.service
+
+	gnome_software_pid=$(ps -A | grep 'gnome-software' | awk '{print $1}')
+	echo "gnome-software PID :: $gnome_software_pid"
+	kill -9 $gnome_software_pid
 }
