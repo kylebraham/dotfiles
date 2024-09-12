@@ -21,7 +21,6 @@
         ".functions": "shellscript",
         "Vagrantfile": "ruby"
     },
-    "workbench.editor.untitled.hint": "hidden",
     "rust-analyzer.checkOnSave.command": "clippy",
     "rust-analyzer.inlayHints.typeHints.enable": false,
     "rust-analyzer.inlayHints.bindingModeHints.enable": true,
@@ -29,5 +28,10 @@
     "rust-analyzer.lens.implementations.enable": false,
     "rust-analyzer.lens.run.enable": false,
     "rust-analyzer.inlayHints.closingBraceHints.enable": false,
-    "editor.inlayHints.enabled": "offUnlessPressed"
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.empty.hint": "hidden",
+    "breadcrumbs.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    // "workbench.list.openMode": "doubleClick",
 }

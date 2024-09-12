@@ -50,3 +50,5 @@ recurseSubmodules = true
 
 [includeIf "gitdir:~/work/"]
 path = ~/.gitconfig-work
+[push]
+	default = current
