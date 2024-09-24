@@ -21,6 +21,7 @@ lg = log --color --graph --date-order --pretty=format:'%C(magenta)%h %C(reset)-%
 
 # Git Funcs
 swb = "!f() { git remote update && git checkout "$1" && git status; }; f"
+db = "!f() {  git swb $(git remote show origin | awk '/HEAD branch/ {print $NF}'); }; f"
 
 [core]
 pager = delta
