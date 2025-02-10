@@ -96,9 +96,6 @@ format = '\[[$symbol($version)]($style)\]'
 [kubernetes]
 format = '[\($user/$context/$namespace\)](red) '
 disabled = false
-contexts = [
-    { context_pattern = ".*caas-buffalo.*", context_alias = "caasprd", user_alias = "kylebrah" },
-]
 
 
 [lua]
