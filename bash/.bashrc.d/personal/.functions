@@ -65,9 +65,7 @@ function dcl {
 
 #ls when cd'ing
 function cd {
-	# [ -z "$PS1" ] && return
-	# builtin cd "$@" && ls -A --file-type
-	builtin cd "$@" && la
+	builtin cd "$@" && lsd -Al --group-directories-first -X
 
 }
 
