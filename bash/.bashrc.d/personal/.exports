@@ -7,7 +7,9 @@ export HISTCONTROL=ignoredups
 export HISTIGNORE=" *:ls:cd:cd -:pwd:exit:date:* --help"
 
 #PATH
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 PATH="$HOME/bin:$HOME/.cargo/bin/:$PATH"
+
 export PATH
 
 # Starship config filec
