@@ -47,5 +47,10 @@
   "github.copilot.chat.enable": false,
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
-  "window.menuBarVisibility": "compact"
+  "window.menuBarVisibility": "compact",
+  "markdownlint.config": {
+    "MD033": false,
+    "MD042": false,
+    "MD059": false
+  }
 }
