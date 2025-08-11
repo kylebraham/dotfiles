@@ -8,9 +8,11 @@ alias doc='cd ~/Documents'
 alias rs='cd ~/repos'
 alias sc='cd ~/scripts'
 
-# Flatpak
-alias zed='flatpak run dev.zed.Zed'
+# run flatpaks
+alias z='flatpak run dev.zed.Zed'
+
 ##DOCKER##
 
 alias dra='docker system prune -af --volumes'   # remove all docker items
 alias di='dti > /dev/null 2>&1 ; docker images' # show docker images and trim any with '<none>'
+
