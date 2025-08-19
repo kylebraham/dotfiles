@@ -13,3 +13,6 @@ unset file
 
 # starship prompt
 eval "$(starship init bash)"
+
+# opencode
+export PATH=/home/kylebrah/.opencode/bin:$PATH
