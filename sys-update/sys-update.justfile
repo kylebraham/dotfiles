@@ -7,9 +7,11 @@ dnf:
 
 
 flatpak:
+  @printf "\n\n"
   flatpak update
 
 rust-cargo:
+  @printf "\n\n"
   rustup check
   rustup update
   cargo install-update -a
@@ -18,6 +20,7 @@ rust-cargo:
 kubectl:
   #!/usr/bin/env bash
   set -eu -o pipefail
+  printf "\n\n"
   install_path="${INSTALL_PATH:-$HOME/bin/kubectl}"
   k8_version="$(curl -fsSL https://dl.k8s.io/release/stable.txt)"
   printf "kubectl version:\t%s\n" "$k8_version"
@@ -42,14 +45,20 @@ kubectl:
 
 
 krew:
+  @printf "\n\n"
   kubectl krew list
   kubectl krew upgrade
+
+opencode:
+    @printf "\n\n"
+    curl -fsSL https://opencode.ai/install | bash
 
 all: \
   (dnf) \
   (flatpak) \
   (kubectl) \
   (krew) \
+  (opencode) \
   (rust-cargo)
   @echo "DONE!"
 
