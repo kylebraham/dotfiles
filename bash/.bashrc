@@ -11,8 +11,8 @@ for file in $(find -L ~/.bashrc.d -type f); do
 done
 unset file
 
+#  direnv hook
+eval "$(direnv hook bash)"
+
 # starship prompt
 eval "$(starship init bash)"
-
-# opencode
-export PATH=/home/kylebrah/.opencode/bin:$PATH
